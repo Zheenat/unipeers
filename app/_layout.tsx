@@ -23,6 +23,12 @@ export default function RootLayout() {
         headerShown:false,
         title:"About Unipeers"
       }}/>
+      <Stack.Screen
+      name="event-details"
+      options={{
+        headerShown:false,
+        title:"Event details"
+      }}/>
     </Stack>
   )
 }
