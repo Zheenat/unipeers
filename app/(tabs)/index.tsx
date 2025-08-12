@@ -3,7 +3,6 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link } from "expo-router";
 import { Dimensions, FlatList, Image, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import AntDesign from '@expo/vector-icons/AntDesign'
 
 //calculate screen width
 const screenWidth = Dimensions.get("screen").width;
@@ -47,10 +46,10 @@ export default function Index () {
                   <View className="flex flex-row justify-between">
                     <View className="flex flex-row items-center gap-x-2">
                       <FontAwesome name="user-circle" size={24} color="black" />
-                      <Text>{item.createdBy}</Text>
+                      <Text>{item.createdBy.length > 24 ? `${item.createdBy.slice(0,24)}...` : item.createdBy}</Text>
                     </View>
 
-                    <Link href="/profile" className="p-3 font-bold text-white bg-teal-800 rounded-md">
+                    <Link href={`/event-details/${item.id}`} className="p-3 font-bold text-white bg-teal-800 rounded-md">
                       <Text>Event Details</Text>
                     </Link>
                   </View>
