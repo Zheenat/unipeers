@@ -9,11 +9,11 @@ export const howToCreateEvent=[
     },
     {
         title:"Venue:",
-        doc:"Specify where the event will take place.This could be a physical location or an online meeting link. Make sure it matches your time zone.",
+        doc:"Specify where the event will take place.This could be a physical location or an online meeting link.",
     },
     {
         title:"time:",
-        doc:"Select the starting time and date of your event",
+        doc:"Select the starting time and date of your event.Make sure it matches your time zone.",
     },
     {
         title:"Description:",
