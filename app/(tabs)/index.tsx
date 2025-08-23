@@ -13,7 +13,7 @@ function Seperator () {
   )
 }
 
-export default function Index () {
+export default function index () {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{
@@ -63,3 +63,12 @@ export default function Index () {
     </SafeAreaProvider>
   )
 }
+
+
+
+
+
+
+
+
+
