@@ -90,5 +90,14 @@ export default function EventDetails () {
                 </SafeAreaView>
             </SafeAreaProvider>
         )
+    }else{
+        return(
+            <SafeAreaProvider>
+                <SafeAreaView style={{ flex:1,paddingVertical:16,display:"flex",justifyContent:"space-between" }}>
+                    <Text style={{fontSize:16}}>undefined event</Text>
+                </SafeAreaView>
+            </SafeAreaProvider>
+ 
+        )
     }
 }
