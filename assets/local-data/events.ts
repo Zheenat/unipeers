@@ -10,7 +10,7 @@ export const events = [
     createdBy: "Anslem Emeka",
     bannerUrl: "https://images.pexels.com/photos/3536274/pexels-photo-3536274.jpeg",
     free: true,
-    fee: 0,
+  fee: 0,
     createdAt: 1755126000000,
   },
   {
