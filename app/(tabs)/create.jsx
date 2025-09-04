@@ -1,20 +1,13 @@
 import { howToCreateEvent } from "@/assets/local-data/how-to-create-event";
 import { schools } from "@/assets/local-data/school-list";
-import { formatTimestampToDate } from "@/utils/format-date.utils";
-import { themeColors } from "@/utils/theme.utils";
-import DateTimePicker from "@react-native-community/datetimepicker";
-import { useEffect, useState } from "react";
-import { Platform, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View, ActivityIndicator, Alert } from "react-native";
-import RNPickerSelect from 'react-native-picker-select';
 import { db } from "@/config/firebase.config";
+import { themeColors } from "@/utils/theme.utils";
 import { addDoc, collection } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { ActivityIndicator, Alert, Platform, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import RNPickerSelect from 'react-native-picker-select';
 
-const options = [
-    {
-        label: "Lagos",
-        value: "lagos"
-    }
-]
+
 
 export default function Create () {
     const [title,setTitle] = useState("");
@@ -41,7 +34,7 @@ export default function Create () {
             date: "",
             createdBy : "anonymous",
             createdAt: new Date().getTime(),
-            imgURL: imageUrl,
+            imgUrl: imageUrl,
             fee: fee
               })
               setLoading(false)
@@ -63,7 +56,7 @@ export default function Create () {
               setVenue("")
               setDescription("")
               setFee("")
-              setimageUrl("")
+              setImageUrl("")
        } catch (error) {
             console.log("An error was encountered", error);
             setLoading(false)

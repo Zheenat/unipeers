@@ -1,42 +1,47 @@
-import { useFonts } from "expo-font";
-import { Dimensions, Image, Pressable,StyleSheet, View, Text } from "react-native";
-import {Division, Span} from "@/styled/custom-styled-components";
+import { Span } from "@/styled/custom-styled-components";
+import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import Feather from "@expo/vector-icons/Feather";
+import { useFonts } from "expo-font";
 import { Link } from "expo-router";
 import { useState } from "react";
-
-
+import { Dimensions, Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 // calculate screen width
 const screenWidth = Dimensions.get("window").width;
 
-export function EventSnippet ({ data }) {
-  const [expandText, setExpandText] = useState(false);
-  const [fontsLoaded] = useFonts({
-    "Raleway-Bold": require("../assets/fonts/Raleway-Bold.ttf"),
-    "Raleway-Regular": require("../assets/fonts/Raleway-Regular.ttf")
+
+
+export  function EventSnippet({data}){
+  
+  const [expandText,setExpandText]=useState(false);
+
+  const [fontsLoaded]=useFonts({
+    "Raleway-Bold":require("../assets/fonts/Raleway-Bold.ttf"),
+    "Raleway-Regular":require("../assets/fonts/Raleway-Regular.ttf")
   });
 
   if (!fontsLoaded) {
     return null
-  }
 
-  return (
+  };
+
+  return(
+    
+
     <View className="flex gap-y-2">
-        <Image 
-        style={{
-          width: screenWidth,
-          height: 400,
-          resizeMode: "cover"
-        }}
-        source={{ uri: data.bannerUrl }}
-        alt="event photo"
-        />
-        {/* interactions */}
-        <View className="flex flex-row justify-between items-center px-3">
-          {/* left of interaction */}
+       <Image
+       style={{
+        width:screenWidth,
+        height:400,
+        resizeMode:"cover"
+       }}
+       source={{uri:data.imgUrl}}
+       alt="event photo"
+       />
+       {/* interactions */}
+       <View className="flex flex-row justify-between items-center px-3">
+         {/* LEFT */}
           <View className="flex flex-row gap-x-3">
             <View className="flex flex-row items-center gap-x-1">
               <Ionicons name="heart" size={24} color="black"/>
@@ -48,33 +53,46 @@ export function EventSnippet ({ data }) {
             </View>
             <View className="flex flex-row items-center gap-x-1">
               <MaterialIcons name="loop" size={24} color="black"/>
-              <Span className="font-bold text-xs">2</Span>
+              <Span className="font-bold text-xs">23</Span>
             </View>
           </View>
-          {/* right of interaction */}
-          <View className="flex flex-row gap-x-3">
-            <Span>N20,000</Span>
-            <Link href={`/event-details/${data.id}`}>
-            <Feather name="arrow-up-right" size={24} color="black"/>
+
+             {/* RIGHT OF INTERACTION */}
+          <View className="flex flex-row items-center gap-x-3">
+            <Span>{data.fee}</Span>
+            <Link href={`/event-details/[${data.id}]`}>
+                <Feather name="arrow-up-right" size={24} color="black"/>
             </Link>
           </View>
-        </View>
+       </View>
 
-        {/* event post section */}
-        <Pressable onPress={()=> setExpandText(!expandText)} className="px-3">
-          {expandText
-          ?
-          <Text>{data.desc}</Text>
-          :
-          <Text>{data.desc.slice(0,80)}.....</Text>}
-        </Pressable>
+       {/* event post section */}
+       <Pressable onPress={() => setExpandText(!expandText)} className="px-3">
+        {expandText 
+        ?
+        <Text style={styles.text}>{data.desc}</Text>
+        :
+        <Text style={styles.text}>{data.description.slice(0,80)}...</Text>
+
+        
+      }
+       </Pressable>
     </View>
+    
+        
+   
   )
+
+
 }
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 14,
-    fontFamily: "Raleway-Regular",
-  }
-})
+  text:{
+    fontSize:14,
+    fontFamily:"Raleway-Regular",
+    fontWeight:"bold"
+
+  },
+
+
+});
